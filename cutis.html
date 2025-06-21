@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cuidado del Cutis - Tienda de Cosméticos</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Cuidado del Cutis</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="maquillaje.html">Maquillaje</a></li>
+        <li><a href="cuerpo.html">Cuidado del cuerpo</a></li>
+        <li><a href="fragancias.html">Fragancias</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Galería de Cuidado del Cutis</h2>
+    <div class="galeria">
+      <script>
+        for (let i = 1; i <= 38; i++) {
+          document.write(`<img src="images/cutis/imagen${i}.jpg" alt="Cutis ${i}" onclick="abrirLightbox(${i})">`);
+        }
+      </script>
+    </div>
+  </main>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <span class="close" onclick="cerrarLightbox()">&times;</span>
+    <img id="img-ampliada" src="" alt="Vista ampliada">
+    <a class="prev" onclick="navegar(-1)">&#10094;</a>
+    <a class="next" onclick="navegar(1)">&#10095;</a>
+  </div>
+
+  <script>
+    let imagenActual = 1;
+
+    function abrirLightbox(indice) {
+      imagenActual = indice;
+      document.getElementById('img-ampliada').src = `images/cutis/imagen${imagenActual}.jpg`;
+      document.getElementById('lightbox').style.display = "block";
+    }
+
+    function cerrarLightbox() {
+      document.getElementById('lightbox').style.display = "none";
+    }
+
+    function navegar(direccion) {
+      imagenActual += direccion;
+      if (imagenActual < 1) imagenActual = 38;
+      if (imagenActual > 36) imagenActual = 1;
+      document.getElementById('img-ampliada').src = `images/cutis/imagen${imagenActual}.jpg`;
+    }
+  </script>
+
+  <footer>
+    &copy; 2025 Tienda de Cosméticos
+  </footer>
+</body>
+</html>

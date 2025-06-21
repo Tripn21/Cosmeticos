@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Maquillaje - Tienda de Cosméticos</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Maquillaje</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="cuerpo.html">Cuidado del cuerpo</a></li>
+        <li><a href="cutis.html">Cuidado del cutis</a></li>
+        <li><a href="fragancias.html">Fragancias</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Galería de Maquillaje</h2>
+    <div class="galeria">
+      <!-- Generamos las 36 imágenes automáticamente con JS -->
+      <script>
+        for (let i = 1; i <= 36; i++) {
+          document.write(`<img src="images/imagen${i}.jpg" alt="Producto ${i}" onclick="abrirLightbox(${i})">`);
+        }
+      </script>
+    </div>
+  </main>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <span class="close" onclick="cerrarLightbox()">&times;</span>
+    <img id="img-ampliada" src="" alt="Vista ampliada">
+    <a class="prev" onclick="navegar(-1)">&#10094;</a>
+    <a class="next" onclick="navegar(1)">&#10095;</a>
+  </div>
+
+  <script src="script.js"></script>
+
+  <footer>
+    &copy; 2025 Tienda de Cosméticos
+  </footer>
+</body>
+</html>
