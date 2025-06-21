@@ -5,6 +5,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fragancias - Tienda de Cosméticos</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Estilos para galería y botones */
+    #productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px 0;
+    }
+
+    .categoria {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .categoria:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .categoria img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .categoria h3 {
+      margin: 10px 0 8px;
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    .categoria button {
+      background-color: #25D366;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background-color 0.3s;
+    }
+
+    .categoria button:hover {
+      background-color: #128C4A;
+    }
+  </style>
 </head>
 
 <body>
@@ -22,24 +75,57 @@
 
   <main>
     <h2>Galería de Fragancias</h2>
-    <div class="galeria">
-      <script>
-        for (let i = 1; i <= 40; i++) {
-          document.write(`<img src="images/fragancias/imagen${i}.jpg" alt="Fragancia ${i}" onclick="abrirLightbox(${i})">`);
-        }
-      </script>
-    </div>
+    <div id="productos"></div>
   </main>
 
   <!-- Lightbox -->
-  <div id="lightbox" class="lightbox">
+  <div id="lightbox" class="lightbox" style="display:none;">
     <span class="close" onclick="cerrarLightbox()">&times;</span>
-    <img id="img-ampliada" src="" alt="Vista ampliada">
+    <img id="img-ampliada" src="" alt="Vista ampliada" />
     <a class="prev" onclick="navegar(-1)">&#10094;</a>
     <a class="next" onclick="navegar(1)">&#10095;</a>
   </div>
 
   <script>
+    const numeroWhatsApp = '50588128867'; // sin + ni espacios
+    const totalProductos = 40;
+    const categoriaNombre = 'Fragancias';
+
+    const contenedor = document.getElementById('productos');
+
+    function enviarWhatsApp(nombreCategoria, numeroProducto) {
+      const mensaje = `Hola, quiero pedir un producto de *${nombreCategoria}*, número: ${numeroProducto}`;
+      const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, '_blank');
+    }
+
+    for(let i = 1; i <= totalProductos; i++) {
+      const div = document.createElement('div');
+      div.classList.add('categoria');
+
+      const img = document.createElement('img');
+      img.src = `images/fragancias/imagen${i}.jpg`;
+      img.alt = `Fragancia ${i}`;
+      img.style.cursor = 'pointer';
+      img.onclick = () => abrirLightbox(i);
+
+      const h3 = document.createElement('h3');
+      h3.textContent = `Producto ${i}`;
+
+      const btn = document.createElement('button');
+      btn.textContent = "Añadir al carrito";
+      btn.onclick = () => enviarWhatsApp(categoriaNombre, i);
+
+      div.appendChild(img);
+      div.appendChild(h3);
+      div.appendChild(btn);
+
+      contenedor.appendChild(div);
+    }
+
+
+    // Lightbox functions
+
     let imagenActual = 1;
 
     function abrirLightbox(indice) {
@@ -54,8 +140,8 @@
 
     function navegar(direccion) {
       imagenActual += direccion;
-      if (imagenActual < 1) imagenActual = 40;
-      if (imagenActual > 36) imagenActual = 1;
+      if (imagenActual < 1) imagenActual = totalProductos;
+      if (imagenActual > totalProductos) imagenActual = 1;
       document.getElementById('img-ampliada').src = `images/fragancias/imagen${imagenActual}.jpg`;
     }
   </script>
