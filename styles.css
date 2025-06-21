@@ -181,3 +181,81 @@ footer {
     padding: 10px;
   }
 }
+/* ================= Responsive Global Styles ================= */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #f8f8f8;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f0f0f0;
+  margin-top: 40px;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero {
+    font-size: 1.2rem;
+    height: 200px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .categoria img {
+    height: 150px;
+  }
+
+  .categorias {
+    padding: 20px;
+    gap: 15px;
+  }
+
+  .categoria h3 {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
