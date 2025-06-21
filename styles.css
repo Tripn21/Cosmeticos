@@ -111,3 +111,73 @@ footer {
 .next {
   right: 20px;
 }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.encabezado {
+  background-color: #f8f8f8;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Pie de página limpio */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f0f0f0;
+  margin-top: 40px;
+}
+
+/* Media Queries para móviles */
+@media (max-width: 768px) {
+  .hero {
+    font-size: 1.2rem;
+    height: 200px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .menu {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .categoria img {
+    height: 150px;
+  }
+
+  .categorias {
+    padding: 20px;
+    gap: 15px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .categoria h3 {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
